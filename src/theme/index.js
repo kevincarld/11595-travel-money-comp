@@ -43,8 +43,8 @@ const customTheme = extendTheme({
   },
   sizes: {
     gutter: '20px',
-    gridcol: '108px',
-    gridmargin: '202px',
+    gridcol: '84px',
+    gridmargin: '340px',
     px: '1px',
     spacer: '40px',
     desktop: {
@@ -55,7 +55,7 @@ const customTheme = extendTheme({
     full: '100%',
     half: '50%',
     container: {
-      desktop: '1516px',
+      desktop: '1228px',
     },
   },
 
