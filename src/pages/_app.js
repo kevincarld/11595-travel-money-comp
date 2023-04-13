@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Competition Test</title>
+      <title>{`${brand} - ${title}`}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         {/* see next.config.js for setting up */}
