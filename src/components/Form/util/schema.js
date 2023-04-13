@@ -7,6 +7,7 @@ export const initialFormValues= {
   MOBILE: '',
   STATE: '',
   POSTCODE: '',
+  NEWSLETTER: true,
   ACCEPTANCE: false,
 
   //default

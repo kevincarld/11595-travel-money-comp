@@ -169,6 +169,12 @@ export default function FormComponent() {
                     </Flex>
 
 
+                    <Field as={Checkbox} type='checkbox' name='NEWSLETTER' borderColor={'black'} defaultChecked>
+                      <Box as='span' fontFamily='book'>
+                        I would like to hear the latest news and promotions from Travel Money OZ.
+                      </Box>
+                    </Field>
+
                     <Field as={Checkbox}  type='checkbox' name='ACCEPTANCE' borderColor={'black'} isInvalid={formik?.values?.ACCEPTANCE === false && formik?.errors?.ACCEPTANCE}>
                       <Box as='span' fontFamily='book'>
                         I’ve read and accept the terms and conditions and the privacy policy.
