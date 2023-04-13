@@ -83,7 +83,8 @@ export default function FormComponent() {
 
             return(
               <Form id='formik'>
-                <div
+                <Box
+                  hidden
                   id="recaptcha"
                   class="g-recaptcha"
                   data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
