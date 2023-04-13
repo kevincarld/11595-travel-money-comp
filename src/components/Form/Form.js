@@ -71,7 +71,8 @@ export default function FormComponent() {
         <Formik
           innerRef={formikRef}
           initialValues={initialFormValues}
-          validationSchema={validationSchema}
+          // TODO: uncomment validationSchema when there's already an api endpoint set to post form values to
+          // validationSchema={validationSchema}
           onSubmit={(values, actions) => {
             // move responsibility to window.submitFormik
             return false
@@ -79,7 +80,7 @@ export default function FormComponent() {
           >
 
           {(formik) => {
-            const invalidFields = checkInvalidFields(formik, ['FIRST_NAME', 'LAST_NAME'])
+            const invalidFields = checkInvalidFields(formik, ['FIRST_NAME', 'LAST_NAME', 'EMAIL_ADDRESS', 'MOBILE', 'STATE', 'POSTCODE'])
 
             return(
               <Form id='formik'>
@@ -96,28 +97,74 @@ export default function FormComponent() {
                 <Box maxW='750px' mx='auto' mt='40px'p={8} >
                   <Stack spacing={4}>
                     <Flex flexDir={{base: 'column', d: 'row'}} gap={4}>
-                      <FormControl id="FIRST_NAME" isRequired isInvalid={invalidFields['FIRST_NAME']}>
-                        <FormLabel htmlFor={`FIRST_NAME`}>Enter your first name</FormLabel>
+                      <FormControl id="FIRST_NAME" isInvalid={invalidFields['FIRST_NAME']}>
+                        <FormLabel htmlFor={`FIRST_NAME`}>First Name*</FormLabel>
                         <Field
                           as={Input}
                           type="text"
                           id="FIRST_NAME"
                           name="FIRST_NAME"
-                          placeholder='First name'
                         />
                         {invalidFields['FIRST_NAME'] && <FormErrorMessage>{formik?.errors?.FIRST_NAME}</FormErrorMessage>}
                       </FormControl>
 
-                      <FormControl id="LAST_NAME" isRequired isInvalid={invalidFields['LAST_NAME']}>
-                        <FormLabel htmlFor={`LAST_NAME`}>Enter your last name</FormLabel>
+                      <FormControl id="LAST_NAME" isInvalid={invalidFields['LAST_NAME']}>
+                        <FormLabel htmlFor={`LAST_NAME`}>Last Name*</FormLabel>
                         <Field
                           as={Input}
                           type="text"
                           id="LAST_NAME"
                           name="LAST_NAME"
-                          placeholder='Last name'
                         />
                         {invalidFields['LAST_NAME'] && <FormErrorMessage>{formik?.errors?.LAST_NAME}</FormErrorMessage>}
+                      </FormControl>
+                    </Flex>
+
+                    <Flex flexDir={{base: 'column', d: 'row'}} gap={4}>
+                      <FormControl id="EMAIL_ADDRESS" isInvalid={invalidFields['EMAIL_ADDRESS']}>
+                        <FormLabel htmlFor={`EMAIL_ADDRESS`}>Email Address*</FormLabel>
+                        <Field
+                          as={Input}
+                          type="text"
+                          id="EMAIL_ADDRESS"
+                          name="EMAIL_ADDRESS"
+                        />
+                        {invalidFields['EMAIL_ADDRESS'] && <FormErrorMessage>{formik?.errors?.EMAIL_ADDRESS}</FormErrorMessage>}
+                      </FormControl>
+
+                      <FormControl id="MOBILE"  isInvalid={invalidFields['MOBILE']}>
+                        <FormLabel htmlFor={`MOBILE`}> Mobile*</FormLabel>
+                        <Field
+                          as={Input}
+                          type="text"
+                          id="MOBILE"
+                          name="MOBILE"
+                        />
+                        {invalidFields['MOBILE'] && <FormErrorMessage>{formik?.errors?.MOBILE}</FormErrorMessage>}
+                      </FormControl>
+                    </Flex>
+
+                    <Flex flexDir={{base: 'column', d: 'row'}} gap={4}>
+                      <FormControl id="STATE" isInvalid={invalidFields['STATE']}>
+                        <FormLabel htmlFor={`STATE`}>State*</FormLabel>
+                        <Field
+                          as={Input}
+                          type="text"
+                          id="STATE"
+                          name="STATE"
+                        />
+                        {invalidFields['STATE'] && <FormErrorMessage>{formik?.errors?.STATE}</FormErrorMessage>}
+                      </FormControl>
+
+                      <FormControl id="POSTCODE"  isInvalid={invalidFields['POSTCODE']}>
+                        <FormLabel htmlFor={`POSTCODE`}>Postcode*</FormLabel>
+                        <Field
+                          as={Input}
+                          type="text"
+                          id="POSTCODE"
+                          name="POSTCODE"
+                        />
+                        {invalidFields['POSTCODE'] && <FormErrorMessage>{formik?.errors?.POSTCODE}</FormErrorMessage>}
                       </FormControl>
                     </Flex>
 
