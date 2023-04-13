@@ -40,19 +40,31 @@ export function useIsInViewport(ref) {
   return isIntersecting;
 }
 
+
 // usage: mock('1920x600', 'Text here')
 export const mock = (dimensions, text='Img', color="gray") => {
   const colors = {
-    gray: '808080',
-    white: 'FFFFFF',
-    black: '000000',
-    red: 'FCA481',
-    blue: 'A4DEF0',
-    green: 'A3CFA7',
-    yellow: 'FFE194',
-    pink: 'F7DCEC'
+    red: "FF0000",
+    green: "00FF00",
+    blue: "0000FF",
+    yellow: "FFFF00",
+    orange: "FFA500",
+    purple: "800080",
+    pink: "FFC0CB",
+    gray: "808080",
+    maroon: "800000",
+    navy: "000080",
+    olive: "808000",
+    teal: "008080",
+    silver: "C0C0C0",
+    gold: "FFD700",
+    indigo: "4B0082",
+    magenta: "FF00FF",
+    turquoise: "40E0D0",
+    peach: "FFDAB9",
+    coral: "FF7F50"
   }
-  let newText = text.replaceAll(' ', '+')
+  let newText = text.toString().replaceAll(' ', '+')
   return `https://via.placeholder.com/${dimensions}/${colors[color]}?text=${newText}`
 }
 

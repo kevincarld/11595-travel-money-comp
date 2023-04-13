@@ -14,16 +14,22 @@ const customTheme = extendTheme({
     lg: '1024px',
     d: '1280px',
     wide: '1600px',
+    hd: '1900',
   },
   fonts: {
-    body: "system-ui, sans-serif",
-    heading: "Georgia, serif",
+    body: "Avenir, system-ui, sans-serif",
+    avenir: "Avenir, system-ui, sans-serif",
+    book: "Avenir Book, Avenir, system-ui, sans-serif",
+    labels: "Prelo Slab, Georgia, serif",
+    heading: "Prelo Slab, Georgia, serif",
+    prelo: "Prelo Slab, Georgia, serif",
     mono: "Menlo, monospace",
   },
   colors: {
-    primary: '#3DCD58',
-    gray: '#F2F2F2',
-    link: '#5081FF'
+    primary: '#39B54A',
+    green: '#39B54A',
+    black: '#000000',
+    gray: '#414040',
   },
   space: {
     gutter: '20px',
