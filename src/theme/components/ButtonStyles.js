@@ -13,23 +13,21 @@ export const ButtonStyles = {
   // styles for different visual variants ("outline", "solid")
   variants: {
     cta: {
-      bg: '#F3831F',
+      bg: '#39B54A',
+      fontFamily: 'prelo',
       color: 'white',
-      fontSize: {base: '14px', d: '18px'},
-      lineHeight: {base: '20px', d:'24px'},
+      fontSize: {base: '20px', d: '25px'},
+      lineHeight: {base: '30px', d:'37px'},
       fontWeight: 'bold',
       height: 'auto',
-      pt: '12px',
-      pb: '12px',
+      pt: '8px',
+      pb: '8px',
       pl: '60px',
       pr: '60px',
-      borderRadius: '999px',
-      border: '2px solid transparent',
+      borderRadius: '4px',
 
       _hover: {
-        bg: 'white',
-        color: '#F3831F',
-        border: '2px solid #F3831F'
+        opacity: '.86'
       }
     }
   },
