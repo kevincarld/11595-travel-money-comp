@@ -1,11 +1,12 @@
 import React from 'react'
 import {Grid, GridItem } from '@chakra-ui/react'
 
-export default function GuideLines({opacity='.20'}) {
+export default function GuideLines({opacity='.15'}) {
   if(!process.env.guidelines) return null
 
   return (
     <Grid
+      display={{base: 'none', lg: 'block'}}
       templateColumns='repeat(12, 1fr)'
       gap='gutter'
       mx='auto'

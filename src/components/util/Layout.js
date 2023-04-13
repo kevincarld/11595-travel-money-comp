@@ -7,12 +7,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 export default function Layout({children}) {
   return (
     <ChakraProvider resetCSS theme={customTheme}>
-      <GlobalCss />
       <GuideLines />
-
       <main>
         {children}
       </main>
+
+      <GlobalCss />
+
     </ChakraProvider>
   )
 }

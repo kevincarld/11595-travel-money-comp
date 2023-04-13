@@ -8,7 +8,8 @@ import {
   Text,
   Center,
   AspectRatio,
-  HStack
+  HStack,
+  Grid
 } from '@chakra-ui/react';
 import { mock } from 'utils/common';
 import Container from './util/Container';
@@ -28,10 +29,13 @@ export default function Hero() {
         <Img dimension='1920x842' src='./hero.jpg' alt='couple spending a lovely holiday' />
       </AspectRatio>
 
-      <Box zIndex={1} pos='absolute' inset='0' bg='red'>
-        <VStack>
-          <HStack>
-            <Box>
+      {/* mask */}
+      <Box opacity='.44' pos='absolute' inset='0' bg='linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(84,84,84,1) 100%, rgba(0,0,0,0.86) 100%)'/>
+
+      <Box zIndex={1} pos='absolute' inset='0' px={{base: '20px'}}>
+        <Grid>
+          <HStack mt={{base: '30px'}} justifyContent='center'>
+            <Box sx={{ svg: {maxW: {base: '101px'}} }}>
               <svg id="Group_21" data-name="Group 21" width="188.845" height="59.098" viewBox="0 0 188.845 59.098">
                 <defs>
                   <clipPath id="clip-path1">
@@ -59,15 +63,35 @@ export default function Hero() {
 
             <Box w='1px' h={{base: '35px'}} bg='white' />
 
-            <Img dimension='161x63' src='./tg.png' alt='travel guide logo' />
+            <Img maxW={{base: '87px'}} dimension='161x63' src='./tg.png' alt='travel guide logo' />
           </HStack>
 
+          <Img mt={{base:"33px"}} dimension='589x240' src='./win.png' alt='win logo' />
 
-        </VStack>
+          <Box color={{base: 'white'}} textAlign='center'>
+            <Text as='h1' my={{base: '10px'}} {...texts.title}>a $20,000 holiday!</Text>
+            <Text {...texts.subtitle}>You could be off on your dream holiday brought to you by Travel Money Oz - the leading foreign exchange service by travellers, for travellers. Wherever your travels take you, Travel Money Oz has the foreign currency you’ll need for your holiday.</Text>
+          </Box>
+
+          <Button justifySelf={'center'} mt={{base:"33px!important"}}>Enter Here</Button>
+        </Grid>
       </Box>
     </Box>
 
   )
 }
 
-
+const texts = {
+  title: {
+    textTransform: 'uppercase',
+    fontFamily: 'prelo',
+    fontSize: {base: '36px'},
+    lineHeight: {base: '54px'},
+    letterSpacing: {base: '0.54px'},
+  },
+  subtitle: {
+    fontFamily: 'prelo',
+    fontSize: {base: '14px'},
+    lineHeight: {base: '18px'},
+  }
+}
