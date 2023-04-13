@@ -27,6 +27,7 @@ import Container from '../util/Container';
 import { isFieldError, isFieldTouched, validateCheckboxTrue, checkInvalidFields } from 'utils/common';
 import { initialFormValues, validationSchema } from './util/schema';
 import Thankyou from './Thankyou';
+import Terms from "components/Terms"
 
 export default function FormComponent() {
   const [formSubmitted, setFormSubmitted] = React.useState(false)
@@ -99,7 +100,7 @@ export default function FormComponent() {
                   p={8}
                 >
                   <Stack spacing={4}>
-                    <Flex gap={4}>
+                    <Flex flexDir={{base: 'column', d: 'row'}} gap={4}>
                       <FormControl id="FIRST_NAME" isRequired isInvalid={invalidFields['FIRST_NAME']}>
                         <FormLabel htmlFor={`FIRST_NAME`}>Enter your first name</FormLabel>
                         <Field
@@ -125,40 +126,15 @@ export default function FormComponent() {
                       </FormControl>
                     </Flex>
 
-                    <Field name="SAMPLE_SELECT">
-                      {({ field, form, meta }) => {
-                        return (
-                          <FormControl id={field.name} isRequired isInvalid={meta?.error !== '' || meta?.error !== undefined}>
-                            <FormLabel htmlFor={`SAMPLE_SELECT`}>Sample dropdown select</FormLabel>
-                            <Select
-                              instanceId={field.name}
-                              id={field.name}
-                              name={field.name}
-                              placeholder="Select your answer"
-                              options={selectOptions}
-                              value={
-                                selectOptions
-                                  ? selectOptions.find((option) => option.value === field.value)
-                                  : null
-                              }
-                              onChange={ (option) => form.setFieldValue(field.name, option.value) }
-                              onBlur={ () => {
-                                form.validateField(field.name)
-                                form.setFieldTouched(field.name, true)
-                              }}
-                              />
 
-                              {meta?.error && meta?.touched && <FormErrorMessage>{meta?.error}</FormErrorMessage> }
-                          </FormControl>
-                        )}
-                      }
-                    </Field>
-
-                    <Field as={Checkbox} type='checkbox' name='ACCEPTANCE' borderColor={'black'} isInvalid={formik?.values?.ACCEPTANCE === false && formik?.errors?.ACCEPTANCE}>
-                      Acceptance sample.
+                    <Field as={Checkbox}  type='checkbox' name='ACCEPTANCE' borderColor={'black'} isInvalid={formik?.values?.ACCEPTANCE === false && formik?.errors?.ACCEPTANCE}>
+                      <Box as='span' fontFamily='book'>
+                        I’ve read and accept the terms and conditions and the privacy policy.
+                      </Box>
                     </Field>
                     {formik?.values?.ACCEPTANCE === false && formik?.errors?.ACCEPTANCE && <Text mt='2!important' fontSize='small' color='red'>{formik?.errors?.ACCEPTANCE}</Text>}
 
+                    <Terms />
 
                     <Box>
                       <Button
