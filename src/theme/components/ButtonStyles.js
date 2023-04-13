@@ -13,7 +13,7 @@ export const ButtonStyles = {
   // styles for different visual variants ("outline", "solid")
   variants: {
     cta: {
-      bg: '#39B54A',
+      bg: 'primary',
       fontFamily: 'prelo',
       color: 'white',
       fontSize: {base: '20px', d: '25px'},
@@ -27,7 +27,13 @@ export const ButtonStyles = {
       borderRadius: '4px',
 
       _hover: {
-        opacity: '.86'
+        opacity: '.86',
+
+        '&:disabled': {
+          background: 'primary',
+          opacity: '.4',
+        }
+
       }
     }
   },

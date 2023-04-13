@@ -202,6 +202,15 @@ export default function App({ Component, pageProps }) {
         </>
       }
       */}
+      <Script src="https://www.google.com/recaptcha/api.js" async defer />
+      <Script>
+      {`
+        function onTokenVerified(token) {
+          document.querySelector('input[name="googleToken"]').value = token;
+          window.submitFormik();
+        }
+      `}
+      </Script>
     </React.Fragment>
   );
 }

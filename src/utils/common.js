@@ -1,4 +1,5 @@
 import { useTheme, useMediaQuery } from "@chakra-ui/react"
+import axios from "axios";
 
 export function useResponsive(query, key) {
   const theme = useTheme();

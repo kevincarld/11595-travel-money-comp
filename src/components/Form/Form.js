@@ -31,74 +31,68 @@ import Terms from "components/Terms"
 
 export default function FormComponent() {
   const [formSubmitted, setFormSubmitted] = React.useState(false)
+  const formikRef = React.useRef(null)
 
-  const handleFormSubmit = async (formik) => {
+  const handleValidationAndToken = async (formik) => {
     formik.setSubmitting(true)
 
-    // TODO: remove this later on when there's already an api endpoint set to post form values to
-    setTimeout(() => {
-      const isAccepted = validateCheckboxTrue(formik, 'ACCEPTANCE', 'Please click this checkbox to accept.')
-      if(isAccepted && formik.isValid && formik.dirty) {
-
-        const { values } = formik
-        const firstname = values['FIRST_NAME']
-        const lastname = values['LAST_NAME']
-
-        // debug
-        window.alert(JSON.stringify(values, null, 2))
-
-
-        // submit to formstack
-        // axios.post('https://submit.formstack.com/forms/YOUR_FORM_ID', values)
-        // .then(response => {
-        //   console.log(response);
-        //     formik.setSubmitting(false);
-        //      setFormSubmitted(true)
-        // })
-        // .catch(error => {
-        //  console.log(error);
-        //  formik.setSubmitting(false)
-        //  setFormSubmitted(true)
-        // });
-
-        formik.setSubmitting(false)
-        setFormSubmitted(true)
-      }
-
+    const isAccepted = validateCheckboxTrue(formik, 'ACCEPTANCE', 'Please click this checkbox to accept the terms and conditions.')
+    if(isAccepted && formik.isValid && formik.dirty) {
+      window.grecaptcha.execute()
+    } else {
       formik.setSubmitting(false)
-    }, 1000)
-
+    }
 
   }
+
+
+  // MAIN FORM SUBMISSION HANDLER
+  React.useEffect(() => {
+
+      window.submitFormik = function() {
+        const formik = formikRef.current
+
+        // TODO: (DEBUG) remove this later on when there's already an api endpoint set to post form values to
+        setTimeout(() => {
+          const { values } = formik
+          const firstname = values['FIRST_NAME']
+          const lastname = values['LAST_NAME']
+          window.alert(JSON.stringify(values, null, 2))
+          formik.setSubmitting(false)
+          setFormSubmitted(true)
+        }, 1000)
+      }
+  }, [formikRef])
 
   return (
     <Container>
       {formSubmitted ? <Thankyou />
       :
         <Formik
+          innerRef={formikRef}
           initialValues={initialFormValues}
           validationSchema={validationSchema}
           onSubmit={(values, actions) => {
-            return true // give responsibility to handleFormSubmit()
+            // move responsibility to window.submitFormik
+            return false
           }}
           >
 
           {(formik) => {
             const invalidFields = checkInvalidFields(formik, ['FIRST_NAME', 'LAST_NAME'])
 
-            const selectOptions = [
-              {label: 'Select A', value: 'select a'},
-              {label: 'Select B', value: 'select b'},
-            ]
-
             return(
-              <Form>
-                <Box
-                  maxW='750px'
-                  mx='auto'
-                  mt='40px'
-                  p={8}
-                >
+              <Form id='formik'>
+                <div
+                  id="recaptcha"
+                  class="g-recaptcha"
+                  data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
+                  data-callback="onTokenVerified"
+                  data-size="invisible"
+                />
+                <input name="googleToken" hidden value="" />
+
+                <Box maxW='750px' mx='auto' mt='40px'p={8} >
                   <Stack spacing={4}>
                     <Flex flexDir={{base: 'column', d: 'row'}} gap={4}>
                       <FormControl id="FIRST_NAME" isRequired isInvalid={invalidFields['FIRST_NAME']}>
@@ -139,7 +133,7 @@ export default function FormComponent() {
                     <Box>
                       <Button
                         isDisabled={formik.isSubmitting || !formik.dirty || (formik.dirty && !formik.isValid)}
-                        onClick={() => handleFormSubmit(formik)}
+                        onClick={() => handleValidationAndToken(formik)}
                         isLoading={formik.isSubmitting}
                         spinner={<Spinner />}
                       >
