@@ -249,6 +249,8 @@ export default function FormComponent() {
         }}
 
       </Formik>
+
+      {/* <Thankyou /> */}
     </Box>
   )
 }
