@@ -25,6 +25,7 @@ export const ButtonStyles = {
       pl: '60px',
       pr: '60px',
       borderRadius: '4px',
+      textTransform: 'uppercase',
 
       _hover: {
         opacity: '.86',
