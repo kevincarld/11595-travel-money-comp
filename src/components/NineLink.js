@@ -3,7 +3,7 @@ import { Link } from '@chakra-ui/react'
 
 export default function NineLink({children, ...rest}) {
   return (
-    <Link target={'_blank'} rel="sponsored" color='link' _hover={{ textDecor: 'underline' }} {...rest}>
+    <Link target={'_blank'} rel="sponsored" color='link' textDecor='underline' {...rest}>
       {children}
     </Link>
   )
