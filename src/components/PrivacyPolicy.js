@@ -17,8 +17,8 @@ const texts = {
   terms: {
     fontFamily: 'book',
     color: '#414040',
-    fontSize: { base: '10px', },
+    fontSize: { base: '10px', d: '9px'},
     letterSpacing: '-0.2px',
-    lineHeight: { base: '12px', },
+    lineHeight: { base: '12px', d:'11px' },
   }
 }

@@ -86,9 +86,9 @@ export default function FormComponent() {
           const invalidFields = checkInvalidFields(formik, ['FIRST_NAME', 'LAST_NAME', 'EMAIL_ADDRESS', 'MOBILE', 'STATE', 'POSTCODE'])
 
           return(
-            <Box>
-              <HStack justifyContent='center' mb={{base: '20px'}}>
-                <Box sx={{ svg: {maxW: {base: '101px'}} }}>
+            <Box bg='white' w={{d: '756px'}} py={{d: '70px'}}>
+              <HStack justifyContent='center' mb={{base: '20px'}} gap={{d: '5px'}}>
+                <Box sx={{ svg: {maxW: {base: '101px', d: '152px'}} }}>
                   <svg id="Group_21" data-name="Group 21" width="152.744" height="47.8" viewBox="0 0 152.744 47.8">
                     <defs>
                       <clipPath id="clip-path2">
@@ -114,27 +114,30 @@ export default function FormComponent() {
                   </svg>
                 </Box>
 
-                <Box w='1px' h={{base: '35px'}} bg='black' />
+                <Box w='1px' h={{base: '35px', d:'52px'}} bg='black' />
 
-                <Img maxW={{base: '87px'}} dimension='161x63' src='./tg.png' alt='travel guide logo' />
+                <Img maxW={{base: '87px', d:'132px'}} dimension='161x63' src='./tg.png' alt='travel guide logo' />
               </HStack>
 
-              <Text textAlign='center' maxW={{base: '334px'}} mx='auto' px={{base: '20px', sm: '0'}} fontFamily='prelo' fontSize={{base: '15px' , sm: '17px'}} lineHeight={{base: '22px', sm: '24px'}}>
-                Ready to channel your inner Travel Guide? Enter your details below for the chance to win a massive $20,000 holiday - and you could soon be flying away!
+              <Text whiteSpace={{d: 'pre-line'}} textAlign='center' maxW={{base: '334px', d:'482px'}} mx='auto' px={{base: '20px', sm: '0'}} fontFamily='prelo' fontSize={{base: '15px' , sm: '17px', d:'19.5px'}} lineHeight={{base: '22px', sm: '24px'}}>
+                {`Ready to channel your inner Travel Guide?
+                Enter your details below for the chance to win a massive
+                $20,000 holiday - and you could soon be flying away!`}
               </Text>
 
-              <Form id='formik'>
-                <Box
-                  hidden
-                  id="recaptcha"
-                  class="g-recaptcha"
-                  data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
-                  data-callback="onTokenVerified"
-                  data-size="invisible"
-                />
-                <input name="googleToken" hidden value="" />
+              <Box maxW='570px' mx='auto' mt='40px' p={{base: '20px', d: 0}} >
+                <Form id='formik'>
+                  <Box
+                    hidden
+                    id="recaptcha"
+                    class="g-recaptcha"
+                    data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
+                    data-callback="onTokenVerified"
+                    data-size="invisible"
+                  />
+                  <input name="googleToken" hidden value="" />
 
-                <Box maxW='756px' mx='auto' mt='40px' p={{base: '20px'}} >
+
                   <Stack spacing={4}>
                     <Flex flexDir={{base: 'column', d: 'row'}} gap={{base: '15px'}}>
                       <FormControl id="FIRST_NAME" isInvalid={invalidFields['FIRST_NAME']}>
@@ -239,8 +242,8 @@ export default function FormComponent() {
 
 
                   </Stack>
-                </Box>
-              </Form>
+                </Form>
+              </Box>
             </Box>
           )
         }}
@@ -267,10 +270,10 @@ const formStyles = {
         '.chakra-checkbox__label': {
           fontFamily: 'book',
           letterSpacing: '-0.3px',
-          fontSize: {base: '10px'},
+          fontSize: {base: '10px', d:'14px'},
           lineHeight: {base: '11.62px'},
           color: '#1E323E',
-          ml: '5px',
+          ml: {base: '5px', d: '14.5px'},
         },
         '.chakra-checkbox__control': {
           borderColor: '#C4C4C4',
