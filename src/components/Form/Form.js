@@ -86,7 +86,7 @@ export default function FormComponent() {
           const invalidFields = checkInvalidFields(formik, ['FIRST_NAME', 'LAST_NAME', 'EMAIL_ADDRESS', 'MOBILE', 'STATE', 'POSTCODE'])
 
           return(
-            <Box bg='white' w={{d: '756px'}} py={{d: '70px'}}>
+            <Box bg='white' w={{d: '756px'}} py={{base: '40px', d: '70px'}} boxShadow={{d: '0 10px 30px rgba(0,0,0,.26)'}}>
               <HStack justifyContent='center' mb={{base: '20px'}} gap={{d: '5px'}}>
                 <Box sx={{ svg: {maxW: {base: '101px', d: '152px'}} }}>
                   <svg id="Group_21" data-name="Group 21" width="152.744" height="47.8" viewBox="0 0 152.744 47.8">
