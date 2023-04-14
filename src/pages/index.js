@@ -5,12 +5,14 @@ import { Box } from "@chakra-ui/react"
 import Layout from "components/util/Layout"
 import Hero from "components/Hero"
 import Form from "components/Form/Form"
-import { Center } from "@chakra-ui/react"
 import Img from "components/util/Img"
+import Masthead from "components/Masthead"
 
 export default function Home() {
   return (
     <Layout>
+      <Masthead />
+
       <Hero />
 
       <Box pos='relative' id='intro' minH={'100vh'} h={{d: '1080px'}} >
