@@ -24,18 +24,18 @@ export default function Hero() {
     }
   }
   return (
-    <Box pos={'relative'}>
-      <AspectRatio ratio={{base: 375/634}}>
+    <Box pos={'relative'} overflow='hidden'>
+      <AspectRatio minH={{d: '750px', wide: '850px'}} ratio={{base: 375/634, md: 3/2.25, d: 1920/850}}>
         <Img dimension='1920x842' src='./hero.jpg' alt='couple spending a lovely holiday' />
       </AspectRatio>
 
       {/* mask */}
-      <Box opacity='.44' pos='absolute' inset='0' bg='linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(84,84,84,1) 100%, rgba(0,0,0,0.86) 100%)'/>
+      <Box display={{d: 'none'}} opacity='.44' pos='absolute' inset='0' bg='linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(84,84,84,1) 100%, rgba(0,0,0,0.86) 100%)'/>
 
-      <Box zIndex={1} pos='absolute' inset='0' px={{base: '20px'}}>
+      <Box zIndex={1} pos='absolute' inset='0' px={{base: '20px'}} display={'flex'} alignItems='center' justifyContent={'center'}>
         <Grid>
-          <HStack mt={{base: '30px'}} justifyContent='center'>
-            <Box sx={{ svg: {maxW: {base: '101px'}} }}>
+          <HStack mt={{base: '-40px', d:'-60px'}} justifyContent='center' gap={{d: '7px'}}>
+            <Box sx={{ svg: {maxW: {base: '101px', d:'188px'}} }}>
               <svg id="Group_21" data-name="Group 21" width="188.845" height="59.098" viewBox="0 0 188.845 59.098">
                 <defs>
                   <clipPath id="clip-path1">
@@ -61,16 +61,16 @@ export default function Hero() {
               </svg>
             </Box>
 
-            <Box w='1px' h={{base: '35px'}} bg='white' />
+            <Box w='1px' h={{base: '35px', d: '52px'}} bg='white' />
 
-            <Img maxW={{base: '87px'}} dimension='161x63' src='./tg.png' alt='travel guide logo' />
+            <Img maxW={{base: '87px', d: '161px'}} dimension='161x63' src='./tg.png' alt='travel guide logo' />
           </HStack>
 
-          <Img mt={{base:"33px"}} dimension='589x240' src='./win.png' alt='win logo' />
+          <Img mt={{base: '10px', sm:"33px"}} maxW={{sm: '330px', wide:"589px"}} mx='auto' dimension='589x240' src='./win.png' alt='win logo' />
 
-          <Box color={{base: 'white'}} textAlign='center'>
+          <Box color={{base: 'white', d:'black'}} textAlign='center'>
             <Text as='h1' my={{base: '10px'}} {...texts.title}>a $20,000 holiday!</Text>
-            <Text {...texts.subtitle}>You could be off on your dream holiday brought to you by Travel Money Oz - the leading foreign exchange service by travellers, for travellers. Wherever your travels take you, Travel Money Oz has the foreign currency you’ll need for your holiday.</Text>
+            <Text {...texts.subtitle} maxW={{base: '335px', wide:'589px'}} mx='auto' >You could be off on your dream holiday brought to you by Travel Money Oz - the leading foreign exchange service by travellers, for travellers. Wherever your travels take you, Travel Money Oz has the foreign currency you’ll need for your holiday.</Text>
           </Box>
 
           <Button justifySelf={'center'} mt={{base:"33px!important"}}>Enter Here</Button>
@@ -85,13 +85,13 @@ const texts = {
   title: {
     textTransform: 'uppercase',
     fontFamily: 'prelo',
-    fontSize: {base: '36px'},
-    lineHeight: {base: '54px'},
+    fontSize: {base:'30px' , sm: '36px', wide:'62px'},
+    lineHeight: {base:'50px', sm: '54px', wide: '94px'},
     letterSpacing: {base: '0.54px'},
   },
   subtitle: {
     fontFamily: 'prelo',
-    fontSize: {base: '14px'},
-    lineHeight: {base: '18px'},
+    fontSize: {base:'12px', sm: '14px', wide:'16px'},
+    lineHeight: {base:'15px', sm: '18px', wide:'24px'},
   }
 }
