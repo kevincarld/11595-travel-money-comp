@@ -6,12 +6,14 @@ import Hero from "components/Hero"
 import Form from "components/Form/Form"
 import Img from "components/util/Img"
 import Masthead from "components/Masthead"
+import HeaderNav from "components/HeaderNav"
 import { motion } from "framer-motion"
 
 export default function Home() {
   return (
     <Layout>
       <Masthead />
+      <HeaderNav />
 
       <Hero />
 
