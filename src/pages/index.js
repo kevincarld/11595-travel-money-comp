@@ -26,6 +26,16 @@ export default function Home() {
 
         <Box pos={{d: 'absolute'}}  inset='0 0 0 0' display={{d: 'flex'}} justifyContent='center' alignItems='center'>
           <Form />
+          <Box
+            // hidden
+            id="recaptcha"
+            className="g-recaptcha"
+            data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
+            data-callback="onTokenVerified"
+            data-error-callback='onTokenError'
+            data-expires-callback='onTokenExpired'
+            data-size="invisible"
+          />
         </Box>
       </Box>
     </Layout>

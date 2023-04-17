@@ -57,8 +57,20 @@ export default function Thankyou() {
           <Button
             as={Link}
             _hover={{
-              textDecor: 'none'
+              textDecor: 'none',
+              transition: 'transform .350s ease-in-out',
+              '&:not(:disabled)': {
+                span: {
+                  transform: 'translateX(10px)'
+                }
+              },
             }}
+            href='https://9now.nine.com.au/travel-guides'
+            rightIcon={
+              <Box as='svg' width="10.782" height="17.976" viewBox="0 0 10.782 17.976">
+                <path id="Path_433" data-name="Path 433" d="M-2668.346,927.53l7.161,7.2-2.479,2.515-3.957,4.014" transform="translate(2670.468 -925.409)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+              </Box>
+            }
           >
             Learn more
           </Button>

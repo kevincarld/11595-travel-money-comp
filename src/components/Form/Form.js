@@ -18,8 +18,10 @@ import {
   InputRightElement,
   IconButton,
   InputGroup,
-  HStack
+  HStack,
+  useToast
 } from '@chakra-ui/react';
+
 // formik
 import { Formik, Form, Field } from 'formik';
 //
@@ -35,6 +37,7 @@ import NineLink from 'components/NineLink';
 import { motion } from 'framer-motion';
 
 export default function FormComponent() {
+  const toast = useToast()
   const [formSubmitted, setFormSubmitted] = React.useState(false)
   const formikRef = React.useRef(null)
 
@@ -50,7 +53,6 @@ export default function FormComponent() {
 
   }
 
-  //TODO: add onerror function for recaptcha
   // MAIN FORM SUBMISSION HANDLER
   React.useEffect(() => {
 
@@ -93,7 +95,14 @@ export default function FormComponent() {
             //   setFormSubmitted(true)
             //   formik.setSubmitting(false)
             // } else {
-            //   // TODO: show error
+              // toast({
+              //   title: json?.message,
+              //   status: 'error',
+              //   duration: 6000,
+              //   isClosable: true,
+              //   position: 'top-center',
+              //   variant: 'top-accent'
+              // })
             // window?.grecaptcha?.execute()
             // }
           })
@@ -171,16 +180,6 @@ export default function FormComponent() {
 
                 <Box maxW='570px' mx='auto' mt='40px' p={{base: '20px', d: 0}} >
                   <Form id='formik'>
-                    <Box
-                      // hidden
-                      id="recaptcha"
-                      class="g-recaptcha"
-                      data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
-                      data-callback="onTokenVerified"
-                      data-error-callback='onTokenError'
-                      data-expires-callback='onTokenExpired'
-                      data-size="invisible"
-                    />
 
 
                     <Stack spacing={4}>
