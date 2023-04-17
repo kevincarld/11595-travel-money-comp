@@ -278,6 +278,11 @@ export default function FormComponent() {
                           onClick={() => handleValidationAndToken(formik)}
                           isLoading={formik.isSubmitting}
                           spinner={<Spinner />}
+                          rightIcon={
+                            <Box as='svg' width="10.782" height="17.976" viewBox="0 0 10.782 17.976">
+                              <path id="Path_433" data-name="Path 433" d="M-2668.346,927.53l7.161,7.2-2.479,2.515-3.957,4.014" transform="translate(2670.468 -925.409)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                            </Box>
+                          }
                         >
                           Submit
                         </Button>

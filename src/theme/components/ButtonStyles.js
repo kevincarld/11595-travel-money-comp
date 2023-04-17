@@ -26,14 +26,24 @@ export const ButtonStyles = {
       pr: '60px',
       borderRadius: '4px',
       textTransform: 'uppercase',
-
+      span: {
+        maxW: {base: '8px', d: 'none'},
+        transition: 'transform .350s ease-in-out',
+      },
       _hover: {
         opacity: '.86',
 
         '&:disabled': {
           background: 'primary',
           opacity: '.4',
-        }
+        },
+
+        '&:not(:disabled)': {
+          span: {
+            transform: 'translateX(10px)'
+          }
+        },
+
 
       }
     }
