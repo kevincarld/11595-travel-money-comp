@@ -5,6 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   assetPrefix: process.env.NODE_ENV === 'development' ? undefined : '.' ,
+  trailingSlash: true,
   exportPathMap: async function (
     defaultPathMap,
     { dev, dir, outDir, distDir, buildId }
@@ -26,7 +27,7 @@ const nextConfig = {
       year: '2023' // e.g 2023
     },
     jobCode: '11595-travel-money-comp', // used for nine ga scripts
-    guidelines: true, // shows or hides layout guideline bars
+    guidelines: false, // shows or hides layout guideline bars
   }
 }
 
