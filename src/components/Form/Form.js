@@ -104,7 +104,7 @@ export default function FormComponent() {
 
       }
 
-      window.tokenReset = async function() {
+      window.tokenReset = function() {
         const formik = formikRef.current
         formik.setSubmitting(false)
         window?.grecaptcha?.execute()

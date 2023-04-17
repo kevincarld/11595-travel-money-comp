@@ -53,6 +53,9 @@ const GlobalCss = () => (
         }
       }
 
+      #__next {
+        overflow: hidden;
+      }
     `}
   />
 )

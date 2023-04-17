@@ -14,27 +14,30 @@ import {
 import { mock } from 'utils/common';
 import Container from './util/Container';
 import Img from './util/Img';
+import { motion } from 'framer-motion';
+import { useResponsive } from 'utils/common';
+import { handleClickScroll } from 'utils/common';
 
 export default function Hero() {
-  const handleClickScroll = (e) => {
-    e.preventDefault()
-    const element = document.getElementById('intro');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+
+  const isDesktop = useResponsive('up', 'd')
   return (
     <Box pos={'relative'} overflow='hidden'>
-      <AspectRatio minH={{d: '750px', wide: '850px'}} ratio={{base: 375/634, md: 3/2.25, d: 1920/850}}>
-        <Img dimension='1920x842' src='./hero.jpg' alt='couple spending a lovely holiday' />
-      </AspectRatio>
+      <motion.div animate={isDesktop ? { scale: 1.5, transition: { duration: 2.4 } } : {}}>
+        <AspectRatio minH={{d: '750px', wide: '850px'}} ratio={{base: 375/634, md: 3/2.25, d: 1920/850}}>
+          <Img dimension='1920x842' src='./hero.jpg' alt='couple spending a lovely holiday' />
+        </AspectRatio>
+      </motion.div>
 
       {/* mask */}
       <Box display={{d: 'none'}} opacity='.44' pos='absolute' inset='0' bg='linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(84,84,84,1) 100%, rgba(0,0,0,0.86) 100%)'/>
 
-      <Box zIndex={1} pos='absolute' inset='0' px={{base: '20px'}} display={'flex'} alignItems='center' justifyContent={'center'}>
+      <Box zIndex={1} pos='absolute' inset='0' px={{base: '20px'}} pt={{lg: '30px', d:'45px', wide: '30px'}} display={'flex'} alignItems='flex-start' justifyContent={'center'}>
         <Grid>
-          <HStack mt={{base: '-40px', d:'-60px'}} justifyContent='center' gap={{d: '7px'}}>
+          <HStack as={motion.div} justifyContent='center' gap={{d: '7px'}}
+            initial={{opacity: 0, y: -100}}
+            animate={{opacity: 1, y: 0, transition: {duration: 1.75}}}
+          >
             <Box sx={{ svg: {maxW: {base: '101px', d:'188px'}} }}>
               <svg id="Group_21" data-name="Group 21" width="188.845" height="59.098" viewBox="0 0 188.845 59.098">
                 <defs>
@@ -66,14 +69,32 @@ export default function Hero() {
             <Img maxW={{base: '87px', d: '161px'}} dimension='161x63' src='./tg.png' alt='travel guide logo' />
           </HStack>
 
-          <Img mt={{base: '10px', sm:"33px"}} maxW={{sm: '330px', wide:"589px"}} mx='auto' dimension='589x240' src='./win.png' alt='win logo' />
+          <motion.div
+          initial={{opacity: 0, y: -100}}
+          animate={{opacity: 1, y: 0, transition: {duration: 1.75}}}
+          >
+            <Img mt={{base: '10px', sm:"33px"}} maxW={{sm: '330px', wide:"589px"}} mx='auto' dimension='589x240' src='./win.png' alt='win logo' />
+          </motion.div>
 
           <Box color={{base: 'white', d:'black'}} textAlign='center'>
-            <Text as='h1' my={{base: '10px'}} {...texts.title}>a $20,000 holiday!</Text>
-            <Text {...texts.subtitle} maxW={{base: '335px', wide:'589px'}} mx='auto' >You could be off on your dream holiday brought to you by Travel Money Oz - the leading foreign exchange service by travellers, for travellers. Wherever your travels take you, Travel Money Oz has the foreign currency you’ll need for your holiday.</Text>
+            <Text as={motion.h1} my={{base: '10px'}} {...texts.title}
+            initial={{opacity: 0, y: 50}}
+            animate={{opacity: 1, y: 0, transition: {duration: 1.75}}}
+            >
+              a $20,000 holiday!
+            </Text>
+
+            <Text as={motion.p} {...texts.subtitle} maxW={{base: '335px', wide:'589px'}} mx='auto'
+            initial={{opacity: 0, y: 150}}
+            animate={{opacity: 1, y: 0, transition: {duration: 1.75}}}
+            >You could be off on your dream holiday brought to you by Travel Money Oz - the leading foreign exchange service by travellers, for travellers. Wherever your travels take you, Travel Money Oz has the foreign currency you’ll need for your holiday.</Text>
           </Box>
 
-          <Button justifySelf={'center'} mt={{base:"33px!important"}}>Enter Here</Button>
+          <Button as={motion.button} justifySelf={'center'} mt={{base:"33px!important"}}
+           initial={{opacity: 0, y: 150}}
+           animate={{opacity: 1, y: 0, transition: {duration: 1.75}}}
+           onClick={handleClickScroll}
+          >Enter Here</Button>
         </Grid>
       </Box>
     </Box>

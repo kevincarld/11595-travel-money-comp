@@ -92,3 +92,23 @@ export const checkInvalidFields = (formik, fields=[]) => {
 
   return obj
 }
+
+export const handleClickScroll = (e) => {
+  e.preventDefault()
+  function findPosition(obj) {
+    var currenttop = 0;
+    if (obj.offsetParent) {
+      do {
+        currenttop += obj.offsetTop;
+      } while ((obj = obj.offsetParent));
+      return [currenttop];
+    }
+  }
+  const element = document.getElementById('intro');
+  if (element) {
+    window.scrollTo({
+      top: findPosition(document.getElementById("intro")),
+      behavior: 'smooth'
+    } )
+  }
+};
