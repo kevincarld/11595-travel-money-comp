@@ -43,7 +43,7 @@ export default function FormComponent() {
 
     const isAccepted = validateCheckboxTrue(formik, 'ACCEPTANCE', 'Please click this checkbox to accept the terms and conditions.')
     if(isAccepted && formik.isValid && formik.dirty) {
-      window.grecaptcha.execute()
+      window?.grecaptcha?.execute()
     } else {
       formik.setSubmitting(false)
     }
@@ -88,18 +88,18 @@ export default function FormComponent() {
             setFormSubmitted(true)
             formik.setSubmitting(false)
 
-            // window.grecaptcha.reset();
+            // window?.grecaptcha?.execute()
             // if (json.success) {
             //   setFormSubmitted(true)
             //   formik.setSubmitting(false)
             // } else {
             //   // TODO: show error
-            //   window.grecaptcha.reset();
+            // window?.grecaptcha?.execute()
             // }
           })
           .catch((err) => {
             console.warn(err);
-            window.grecaptcha.reset();
+            window?.grecaptcha?.execute()
           });
 
       }
@@ -107,7 +107,7 @@ export default function FormComponent() {
       window.tokenReset = async function() {
         const formik = formikRef.current
         formik.setSubmitting(false)
-        window.grecaptcha.reset();
+        window?.grecaptcha?.execute()
       }
   }, [formikRef])
 
