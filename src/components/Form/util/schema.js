@@ -8,7 +8,7 @@ export const initialFormValues= {
   STATE: '',
   POSTCODE: '',
   NEWSLETTER: true,
-  ACCEPTANCE: false,
+  ACCEPTANCE: true,
 
   //default
   meta: {

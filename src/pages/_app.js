@@ -202,15 +202,27 @@ export default function App({ Component, pageProps }) {
         </>
       }
       */}
-      <Script src="https://www.google.com/recaptcha/api.js" async defer />
+
+
       <Script>
       {`
+        // callback function for recaptcha
         function onTokenVerified(token) {
-          document.querySelector('input[name="googleToken"]').value = token;
-          window.submitFormik();
+          window.submitFormik(token); // submit the form - see function in components/Form/Form.js
+        }
+
+        function onTokenError(error) {
+          // console.log('onTokenError', error);
+        }
+
+        function onTokenExpired() {
+          // console.log('onTokenExpired');
+          window.tokenReset(); // reset the token - see function in components/Form/Form.js
         }
       `}
       </Script>
+
+      <Script src="https://www.google.com/recaptcha/api.js" async defer />
     </React.Fragment>
   );
 }

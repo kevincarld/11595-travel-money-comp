@@ -53,18 +53,60 @@ export default function FormComponent() {
   // MAIN FORM SUBMISSION HANDLER
   React.useEffect(() => {
 
-      window.submitFormik = function() {
+      window.submitFormik = async function(googleToken) {
         const formik = formikRef.current
 
         // TODO: (DEBUG) remove this later on when there's already an api endpoint set to post form values to
-        setTimeout(() => {
-          const { values } = formik
-          const firstname = values['FIRST_NAME']
-          const lastname = values['LAST_NAME']
-          window.alert(JSON.stringify(values, null, 2))
-          formik.setSubmitting(false)
-          setFormSubmitted(true)
-        }, 1000)
+        // setTimeout(() => {
+        //   const { values } = formik
+        //   const firstname = values['FIRST_NAME']
+        //   const lastname = values['LAST_NAME']
+        //   console.log(googleToken)
+        //   window.alert(JSON.stringify(values, null, 2))
+        //   formik.setSubmitting(false)
+        //   setFormSubmitted(true)
+        // }, 1000)
+        console.log(JSON.stringify({...formik.values, googleToken}, null, 2))
+
+        const config = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify({
+            email: 'morpheus',
+            job: 'leader'
+          }),
+        };
+
+        fetch('https://reqres.in/api/users', config)
+          .then((data) => data.json())
+          .then((json) => {
+            console.log('success', json);
+
+            setFormSubmitted(true)
+            formik.setSubmitting(false)
+
+            // window.grecaptcha.reset();
+            // if (json.success) {
+            //   setFormSubmitted(true)
+            //   formik.setSubmitting(false)
+            // } else {
+            //   // TODO: show error
+            //   window.grecaptcha.reset();
+            // }
+          })
+          .catch((err) => {
+            console.warn(err);
+            window.grecaptcha.reset();
+          });
+
+      }
+
+      window.tokenReset = async function() {
+        const formik = formikRef.current
+        formik.setSubmitting(false)
+        window.grecaptcha.reset();
       }
   }, [formikRef])
 
@@ -128,14 +170,15 @@ export default function FormComponent() {
               <Box maxW='570px' mx='auto' mt='40px' p={{base: '20px', d: 0}} >
                 <Form id='formik'>
                   <Box
-                    hidden
+                    // hidden
                     id="recaptcha"
                     class="g-recaptcha"
                     data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
                     data-callback="onTokenVerified"
+                    data-error-callback='onTokenError'
+                    data-expires-callback='onTokenExpired'
                     data-size="invisible"
                   />
-                  <input name="googleToken" hidden value="" />
 
 
                   <Stack spacing={4}>
